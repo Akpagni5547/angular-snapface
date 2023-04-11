@@ -1,0 +1,21 @@
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<div class="face-snap-card " *ngIf="faceSnap$ | async as faceSnap" [ngClass]="{ 'snapped': isClicked }">
+    <h2>{{faceSnap.title | titlecase}}</h2>
+
+    <a routerLink="/facesnaps">Back</a>
+    <p>La date de mise en ligne est {{faceSnap.createdDate | date : 'à HH:mm, le d MMMM yyyy'}}</p>
+    <img [src]=" faceSnap.imageUrl" [alt]="faceSnap.title ">
+    <p>{{faceSnap.description}}</p>
+    <p>
+        <button (click)="onAddSnap(faceSnap.id)">
+            {{ isClicked ? ' Oops retire snap' : ' Oh snap'}}
+        </button>
+        <span [ngStyle]="{color : 'rgb(0, '+ faceSnap.snaps  + ', 0)'}"> 🤌 {{faceSnap.snaps}} </span>
+    </p>
+    <p *ngIf="faceSnap.location">Photo prise {{ faceSnap.location}}</p>
+    <p>{{ 35000 | currency : 'FCFA'}}</p>
+</div>
