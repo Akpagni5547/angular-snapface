@@ -8,11 +8,11 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router, private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
   ngOnInit(): void {}
 
   onLogin(): void {
     this.auth.login();
-    // this.router.navigateByUrl('facesnaps');
+    this.router.navigateByUrl('/facesnaps');
   }
 }
